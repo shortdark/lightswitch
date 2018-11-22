@@ -1,6 +1,6 @@
 <?php
 
-namespace Shortdark\Lightswitch;
+namespace Shortdark;
 
 interface LightswitchInterface
 {
