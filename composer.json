@@ -1,0 +1,23 @@
+{
+    "name": "shortdark/Lightswitch",
+    "description": "Demo composer package to generate customized arrays of random numbers.",
+    "keywords": ["random","generator", "array"],
+    "homepage": "https://github.com/shortdark/lightswitch",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Neil Ludlow",
+            "email": "neil@shortdark.net",
+            "homepage": "https://www.shortdark.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lightswitch\\": "src/"
+        }
+    }
+}
