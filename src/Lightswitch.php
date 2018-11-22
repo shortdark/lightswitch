@@ -9,6 +9,8 @@ class Lightswitch implements LightswitchInterface
 
 
     /**
+     * Press the lightswitch, i.e. generate the array of integers.
+     *
      * @param int $lowestinteger
      * @param int $highestinteger
      * @param int $volumeofintegers
@@ -23,6 +25,8 @@ class Lightswitch implements LightswitchInterface
     }
 
     /**
+     * Generate a random integer.
+     *
      * @param int $lowestinteger
      * @param int $highestinteger
      * @return int $random_integer
@@ -35,6 +39,8 @@ class Lightswitch implements LightswitchInterface
     }
 
     /**
+     * Populate the array with a random integer.
+     *
      * @param int $lowestinteger
      * @param int $highestinteger
      * @param int $volumeofintegers
@@ -54,6 +60,8 @@ class Lightswitch implements LightswitchInterface
     }
 
     /**
+     * Ensure that every item in the array is unique, i.e. remove duplicate values.
+     *
      * @param int $volumeofintegers
      */
     private function removeDuplicateValues($volumeofintegers=0)
@@ -67,6 +75,8 @@ class Lightswitch implements LightswitchInterface
     }
 
     /**
+     * Populate the array and remove duplicates.
+     *
      * @param int $lowestinteger
      * @param int $highestinteger
      * @param int $volumeofintegers
@@ -89,6 +99,8 @@ class Lightswitch implements LightswitchInterface
     }
 
     /**
+     * Count the size of the array.
+     *
      * @return int
      */
     private function countSizeOfArray()
@@ -98,7 +110,7 @@ class Lightswitch implements LightswitchInterface
     }
 
     /**
-     *
+     * Sort the array in order of the value of each integer, from low to high.
      */
     private function sortArrayLowToHigh()
     {
