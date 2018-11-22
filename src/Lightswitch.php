@@ -18,6 +18,7 @@ class Lightswitch implements LightswitchInterface
     {
 
         self::populateAndRemoveDuplicates($lowestinteger, $highestinteger, $volumeofintegers);
+        self::sortArrayLowToHigh();
         return $this->random_integer_array;
     }
 
@@ -59,7 +60,7 @@ class Lightswitch implements LightswitchInterface
     {
 
         if( isset($this->random_integer_array) && isset($volumeofintegers) ){
-            $this->random_integer_array = array_unique($random_integer_array);
+            $this->random_integer_array = array_unique($this->random_integer_array);
         }
 
         return;
@@ -96,5 +97,13 @@ class Lightswitch implements LightswitchInterface
         return $array_size;
     }
 
+    /**
+     *
+     */
+    private function sortArrayLowToHigh()
+    {
+        sort($this->random_integer_array);
+        return;
+    }
 
 }
