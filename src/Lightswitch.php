@@ -2,7 +2,7 @@
 
 namespace shortdark;
 
-class Lightswitch
+class Lightswitch implements LightswitchInterface
 {
 
     protected $random_integer_array=[];
@@ -14,7 +14,8 @@ class Lightswitch
      * @param int $volumeofintegers
      * @return array $random_integer_array
      */
-    public function press($lowestinteger=0, $highestinteger=0, $volumeofintegers=0){
+    public function press($lowestinteger=0, $highestinteger=0, $volumeofintegers=0)
+    {
 
         self::populateAndRemoveDuplicates($lowestinteger, $highestinteger, $volumeofintegers);
         return $this->random_integer_array;
@@ -25,7 +26,8 @@ class Lightswitch
      * @param int $highestinteger
      * @return int $random_integer
      */
-    private function generateRandomInteger($lowestinteger=0, $highestinteger=0){
+    private function generateRandomInteger($lowestinteger=0, $highestinteger=0)
+    {
 
         $random_integer = rand($lowestinteger, $highestinteger);
         return $random_integer;
@@ -36,7 +38,8 @@ class Lightswitch
      * @param int $highestinteger
      * @param int $volumeofintegers
      */
-    private function populateArray($lowestinteger=0, $highestinteger=0, $volumeofintegers=0){
+    private function populateArray($lowestinteger=0, $highestinteger=0, $volumeofintegers=0)
+    {
 
         $size = self::countSizeOfArray();
 
@@ -51,7 +54,8 @@ class Lightswitch
     /**
      * @param int $volumeofintegers
      */
-    private function removeDuplicateValues($volumeofintegers=0){
+    private function removeDuplicateValues($volumeofintegers=0)
+    {
 
         if( isset($random_integer_array) && isset($volumeofintegers) ){
             $this->random_integer_array = array_unique($random_integer_array);
@@ -65,7 +69,8 @@ class Lightswitch
      * @param int $highestinteger
      * @param int $volumeofintegers
      */
-    private function populateAndRemoveDuplicates($lowestinteger=0, $highestinteger=0, $volumeofintegers=0){
+    private function populateAndRemoveDuplicates($lowestinteger=0, $highestinteger=0, $volumeofintegers=0)
+    {
 
 
         self::populateArray($lowestinteger, $highestinteger, $volumeofintegers);
@@ -84,7 +89,8 @@ class Lightswitch
     /**
      * @return int
      */
-    private function countSizeOfArray(){
+    private function countSizeOfArray()
+    {
         $array_size = count($this->random_integer_array);
         return $array_size;
     }
