@@ -58,7 +58,7 @@ class Lightswitch implements LightswitchInterface
     private function removeDuplicateValues($volumeofintegers=0)
     {
 
-        if( isset($random_integer_array) && isset($volumeofintegers) ){
+        if( isset($this->random_integer_array) && isset($volumeofintegers) ){
             $this->random_integer_array = array_unique($random_integer_array);
         }
 
