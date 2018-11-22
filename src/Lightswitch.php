@@ -18,7 +18,6 @@ class Lightswitch implements LightswitchInterface
      */
     public function press($lowestinteger=0, $highestinteger=0, $volumeofintegers=0)
     {
-
         self::populateAndRemoveDuplicates($lowestinteger, $highestinteger, $volumeofintegers);
         self::sortArrayLowToHigh();
         return $this->random_integer_array;
@@ -33,7 +32,6 @@ class Lightswitch implements LightswitchInterface
      */
     private function generateRandomInteger($lowestinteger=0, $highestinteger=0)
     {
-
         $random_integer = rand($lowestinteger, $highestinteger);
         return $random_integer;
     }
@@ -47,7 +45,6 @@ class Lightswitch implements LightswitchInterface
      */
     private function populateArray($lowestinteger=0, $highestinteger=0, $volumeofintegers=0)
     {
-
         $size = self::countSizeOfArray();
 
         if($volumeofintegers > 0 && $lowestinteger > 0 && $highestinteger > $lowestinteger){
@@ -66,7 +63,6 @@ class Lightswitch implements LightswitchInterface
      */
     private function removeDuplicateValues($volumeofintegers=0)
     {
-
         if( isset($this->random_integer_array) && isset($volumeofintegers) ){
             $this->random_integer_array = array_unique($this->random_integer_array);
         }
@@ -83,8 +79,6 @@ class Lightswitch implements LightswitchInterface
      */
     private function populateAndRemoveDuplicates($lowestinteger=0, $highestinteger=0, $volumeofintegers=0)
     {
-
-
         self::populateArray($lowestinteger, $highestinteger, $volumeofintegers);
 
         self::removeDuplicateValues($volumeofintegers);
