@@ -1,5 +1,5 @@
 {
-    "name": "shortdark/Lightswitch",
+    "name": "shortdark/lightswitch",
     "description": "Demo composer package to generate customized arrays of random numbers.",
     "keywords": ["random","generator", "array"],
     "homepage": "https://github.com/shortdark/lightswitch",
