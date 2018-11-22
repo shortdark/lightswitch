@@ -45,7 +45,7 @@ class Lightswitch implements LightswitchInterface
 
         if($volumeofintegers > 0 && $lowestinteger > 0 && $highestinteger > $lowestinteger){
             while( $volumeofintegers > $size ){
-                self::generateRandomInteger($lowestinteger, $highestinteger);
+                $this->random_integer_array[] = self::generateRandomInteger($lowestinteger, $highestinteger);
             }
         }
         return;
