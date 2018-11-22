@@ -1,6 +1,6 @@
 <?php
 
-namespace shortdark;
+namespace Shortdark;
 
 class Lightswitch implements LightswitchInterface
 {
