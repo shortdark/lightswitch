@@ -9,21 +9,6 @@ class Lightswitch implements LightswitchInterface
 
     /**
      * Press the lightswitch, i.e. generate the array of integers.
-     *
-     * @param int $lowestinteger
-     * @param int $highestinteger
-     * @param int $volumeofintegers
-     * @return array $random_integer_array
-     */
-    public function press($lowestinteger=0, $highestinteger=0, $volumeofintegers=0)
-    {
-        self::populateAndRemoveDuplicates($lowestinteger, $highestinteger, $volumeofintegers);
-        self::sortArrayLowToHigh();
-        return $this->random_integer_array;
-    }
-
-    /**
-     * Press the lightswitch, i.e. generate the array of integers.
      * Allow the array to have two min/max rules.
      *
      * @param int $lowestinteger
