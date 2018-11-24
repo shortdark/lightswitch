@@ -5,8 +5,7 @@ namespace Shortdark;
 class Lightswitch implements LightswitchInterface
 {
 
-    protected $random_integer_array=[];
-
+    private $random_integer_array=[];
 
     /**
      * Press the lightswitch, i.e. generate the array of integers.
@@ -24,6 +23,38 @@ class Lightswitch implements LightswitchInterface
     }
 
     /**
+     * Press the lightswitch, i.e. generate the array of integers.
+     * Allow the array to have two min/max rules.
+     *
+     * @param int $lowestinteger
+     * @param int $highestinteger
+     * @param int $volumeofintegers
+     * @param int $lowestinteger2
+     * @param int $highestinteger2
+     * @param int $volumeofintegers2
+     * @return array
+     */
+    public function press($lowestinteger=0, $highestinteger=0, $volumeofintegers=0, $lowestinteger2=0, $highestinteger2=0, $volumeofintegers2=0)
+    {
+        // Populate the first array only and sort it from high to low
+        self::populateAndRemoveDuplicates($lowestinteger, $highestinteger, $volumeofintegers);
+        self::sortArrayLowToHigh();
+
+        if( $highestinteger2 > 0 && $volumeofintegers2 > 0 ){
+            // Add the second volume to the first to find the new total volume
+            $totalvolumeofintegers = $volumeofintegers + $volumeofintegers2;
+
+            // Use the second min/max values and add them onto the array
+            self::populateAndRemoveDuplicates($lowestinteger2, $highestinteger2, $totalvolumeofintegers);
+
+            // We can't sort the array now because it would mix up the two sets of numbers
+            // Find a way of sorting just these new additions.
+        }
+
+        return $this->random_integer_array;
+    }
+
+    /**
      * Generate a random integer.
      *
      * @param int $lowestinteger
@@ -36,8 +67,9 @@ class Lightswitch implements LightswitchInterface
         return $random_integer;
     }
 
+
     /**
-     * Populate the array with a random integer.
+     * Populate the array with random integers.
      *
      * @param int $lowestinteger
      * @param int $highestinteger
@@ -58,15 +90,12 @@ class Lightswitch implements LightswitchInterface
 
     /**
      * Ensure that every item in the array is unique, i.e. remove duplicate values.
-     *
-     * @param int $volumeofintegers
      */
-    private function removeDuplicateValues($volumeofintegers=0)
+    private function removeDuplicateValues()
     {
-        if( isset($this->random_integer_array) && isset($volumeofintegers) ){
+        if( !empty($this->random_integer_array) ){
             $this->random_integer_array = array_unique($this->random_integer_array);
         }
-
         return;
     }
 
@@ -81,7 +110,7 @@ class Lightswitch implements LightswitchInterface
     {
         self::populateArray($lowestinteger, $highestinteger, $volumeofintegers);
 
-        self::removeDuplicateValues($volumeofintegers);
+        self::removeDuplicateValues();
 
         $size = self::countSizeOfArray();
 
