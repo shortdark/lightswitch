@@ -33,6 +33,31 @@ var_dump($result);
 
 ```
 
+## Basic Usage in a Laravel Controller
+
+```php
+<?php
+
+use App\Http\Controllers\Controller;
+use Shortdark\Lightswitch;
+
+class MyController extends Controller
+{
+    public function index(Lightswitch $light)
+    {
+        $result = $light->press(1,49,5,1,9,2);
+        return view('index', compact('result'));
+    }
+    
+}
+```
+
+Then, as $result is an array, to get a representation of the array you could have something like the following in the index.blade.php.
+
+```php
+{{ json_encode($result) }}
+```
+
 ### Author
 
 Neil Ludlow - <neil@shortdark.net> - <https://twitter.com/shortdark>

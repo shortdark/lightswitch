@@ -26,21 +26,64 @@ class Lightswitch implements LightswitchInterface
         self::sortArrayLowToHigh();
 
         if( $highestinteger2 > 0 && $volumeofintegers2 > 0 ){
-            // Add the second volume to the first to find the new total volume
-            $totalvolumeofintegers = $volumeofintegers + $volumeofintegers2;
-
-            // Use the second min/max values and add them onto the array
-            self::populateAndRemoveDuplicates($lowestinteger2, $highestinteger2, $totalvolumeofintegers);
-
-            self::removeGapsFromArrayIndexes();
-
-            $temp1 = array_slice($this->random_integer_array, 0, $volumeofintegers);
-            $temp2 = array_slice($this->random_integer_array, $volumeofintegers);
-            sort($temp2);
-            $this->random_integer_array = array_merge($temp1, $temp2);
+            self::createSecondPartOfArray($volumeofintegers, $lowestinteger2, $highestinteger2, $volumeofintegers2);
         }
 
         return $this->random_integer_array;
+    }
+
+    /**
+     * If the second min/max/volume is specified we want to create the unique integers and sort them at the end of the array.
+     *
+     * @param int $volumeofintegers
+     * @param int $lowestinteger2
+     * @param int $highestinteger2
+     * @param int $volumeofintegers2
+     */
+    private function createSecondPartOfArray($volumeofintegers=0, $lowestinteger2=0, $highestinteger2=0, $volumeofintegers2=0)
+    {
+        // Add the second volume to the first to find the new total volume
+        $totalvolumeofintegers = self::findTotalVolumeOfArray($volumeofintegers, $volumeofintegers2);
+
+        // Use the second min/max values and add them onto the array to ensure the new values are unique
+        self::populateAndRemoveDuplicates($lowestinteger2, $highestinteger2, $totalvolumeofintegers);
+
+        // If there were duplicates in the second part of the array there may be gaps in the indexes
+        // We want to remove any gaps...
+        self::removeGapsFromArrayIndexes();
+
+        if(1 < $volumeofintegers2){
+            // If there is more than one integer in the second part, make sure the order is low to high
+            self::sortNewIntegers($volumeofintegers);
+        }
+        return;
+    }
+
+    /**
+     * Sort the second part of the array.
+     *
+     * @param int $volumeofintegers
+     */
+    private function sortNewIntegers($volumeofintegers=0)
+    {
+        $temp1 = array_slice($this->random_integer_array, 0, $volumeofintegers);
+        $temp2 = array_slice($this->random_integer_array, $volumeofintegers);
+        sort($temp2);
+        $this->random_integer_array = array_merge($temp1, $temp2);
+        return;
+    }
+
+    /**
+     * Get the total of the two volumes by adding them together.
+     *
+     * @param int $volumeofintegers
+     * @param int $volumeofintegers2
+     * @return int
+     */
+    private function findTotalVolumeOfArray($volumeofintegers=0, $volumeofintegers2=0)
+    {
+        $totalvolumeofintegers = $volumeofintegers + $volumeofintegers2;
+        return $totalvolumeofintegers;
     }
 
     /**
