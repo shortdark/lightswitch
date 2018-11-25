@@ -34,9 +34,10 @@ class Lightswitch implements LightswitchInterface
 
             self::removeGapsFromArrayIndexes();
 
-            // We can't sort the array now because it would mix up the two sets of numbers
-            // Find a way of sorting just these new additions.
-            // Try separating the array into two parts, sorting the second part then re-joining the arrays together.
+            $temp1 = array_slice($this->random_integer_array, 0, $volumeofintegers);
+            $temp2 = array_slice($this->random_integer_array, $volumeofintegers);
+            sort($temp2);
+            $this->random_integer_array = array_merge($temp1, $temp2);
         }
 
         return $this->random_integer_array;
