@@ -32,11 +32,24 @@ class Lightswitch implements LightswitchInterface
             // Use the second min/max values and add them onto the array
             self::populateAndRemoveDuplicates($lowestinteger2, $highestinteger2, $totalvolumeofintegers);
 
+            self::removeGapsFromArrayIndexes();
+
             // We can't sort the array now because it would mix up the two sets of numbers
             // Find a way of sorting just these new additions.
+            // Try separating the array into two parts, sorting the second part then re-joining the arrays together.
         }
 
         return $this->random_integer_array;
+    }
+
+    /**
+     * If there were duplicates removed from the second lot of integers there will be gap(s) in the indexes of the array.
+     * Remove the gaps by using the PHP array_values function.
+     */
+    private function removeGapsFromArrayIndexes()
+    {
+        $this->random_integer_array = array_values($this->random_integer_array);
+        return;
     }
 
     /**
