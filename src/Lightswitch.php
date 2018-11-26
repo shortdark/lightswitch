@@ -21,6 +21,9 @@ class Lightswitch implements LightswitchInterface
      */
     public function press($lowestinteger=0, $highestinteger=0, $volumeofintegers=0, $lowestinteger2=0, $highestinteger2=0, $volumeofintegers2=0)
     {
+        // Make sure the global array is empty for each "press"
+        self::resetGlobalArray();
+
         // Populate the first array only and sort it from high to low
         self::populateAndRemoveDuplicates($lowestinteger, $highestinteger, $volumeofintegers);
         self::sortArrayLowToHigh();
@@ -30,6 +33,15 @@ class Lightswitch implements LightswitchInterface
         }
 
         return $this->random_integer_array;
+    }
+
+    /**
+     * Reset the global array
+     */
+    private function resetGlobalArray()
+    {
+        $this->random_integer_array=[];
+        return;
     }
 
     /**
